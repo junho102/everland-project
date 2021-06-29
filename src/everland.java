@@ -1,12 +1,13 @@
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class everland {
 
 	public static void main(String[] args) {
 		
-Scanner myInput = new Scanner(System.in);
+		Scanner myInput = new Scanner(System.in);
 		
 		String ticketNum =null;			// 날짜 별 A,B,C 티켓 구분
 		int price =0;
@@ -14,15 +15,13 @@ Scanner myInput = new Scanner(System.in);
 		int age =0;
 		String age2 = null;				// 연령별 (경로, 대인, 청소년, 소인) 구분
 		int type =0;					// 추가 구매 확인
-		int count =0;
 		int finalPrice =0;
 		
-//		ticketNum, age2, numberOfTicket, price*numberOfTicket, udae
-		String saveTicketNum[] = new String[100];
-		String saveAge2[] = new String[100];
-		int saveNumberOfTicket[] = new int[100];
-		int saveFinalPrice[] = new int[100];
-		String saveUdae[] = new String[100];
+		ArrayList<String> arrTicketNum = new ArrayList<String>();
+		ArrayList<String> arrAge2 = new ArrayList<String>();
+		ArrayList<Integer> arrNumberOfTicket = new ArrayList<Integer>();
+		ArrayList<Integer> arrFinalPrice = new ArrayList<Integer>();
+		ArrayList<String> arrUdae = new ArrayList<String>();
 		
 		
 		
@@ -35,6 +34,12 @@ Scanner myInput = new Scanner(System.in);
 		
 		
 		do {
+			arrTicketNum.clear();
+			arrAge2.clear();
+			arrNumberOfTicket.clear();
+			arrFinalPrice.clear();
+			arrUdae.clear();
+			
 			while(true) {
 				System.out.println("\n이용날짜를 입력하세요. ex)20210605");
 				int inputDate = myInput.nextInt();
@@ -258,23 +263,25 @@ Scanner myInput = new Scanner(System.in);
 							}
 						}
 					}
-					saveTicketNum[count] = ticketNum;
-					saveAge2[count] = age2;
-					saveNumberOfTicket[count] = numberOfTicket;
-					saveFinalPrice[count] = price*numberOfTicket;
-					saveUdae[count] = udae;
+					arrTicketNum.add(ticketNum);
+					arrAge2.add(age2);
+					arrNumberOfTicket.add(numberOfTicket);
+					arrFinalPrice.add(price*numberOfTicket);
+					arrUdae.add(udae);
 					
-					finalPrice += saveFinalPrice[count];
-					count++;
+					finalPrice += arrFinalPrice.get(0);
+					
+					
 					
 					System.out.printf("\n가격은 %d원 입니다.",price*numberOfTicket);
 					System.out.printf("\n감사합니다.\n");
 					System.out.println();
 					System.out.print("==================에버랜드==================");
-					for(int index=0;index<count; index++) {
+					for(int index=0;index<arrTicketNum.size(); index++) {
 						System.out.printf("\n%s  %s x %d\t%d원\t   *%s",
-								saveTicketNum[index],saveAge2[index],saveNumberOfTicket[index],
-								saveFinalPrice[index],saveUdae[index]);
+								arrTicketNum.get(index),arrAge2.get(index),
+								arrNumberOfTicket.get(index),
+								arrFinalPrice.get(index),arrUdae.get(index));
 					}
 					System.out.print("\n=========================================\n");
 					
