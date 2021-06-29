@@ -14,6 +14,7 @@ public class everland {
 	public static String age2 = null;				// 연령별 (경로, 대인, 청소년, 소인) 구분
 	public static int type =0;					// 추가 구매 확인
 	public static int finalPrice =0;
+	public static int count =0;
 	
 	public static ArrayList<String> arrTicketNum = new ArrayList<String>();
 	public static ArrayList<String> arrAge2 = new ArrayList<String>();
@@ -268,12 +269,14 @@ public class everland {
 		arrFinalPrice.add(price*numberOfTicket);
 		arrUdae.add(udae);
 		
-		finalPrice += arrFinalPrice.get(0);
+		finalPrice += (arrFinalPrice.get(count));
+		count++;
 		System.out.printf("\n가격은 %d원 입니다.",price*numberOfTicket);
 		System.out.printf("\n감사합니다.\n");
 		System.out.println();
 		System.out.print("==================에버랜드==================");
-		for(int index=0; index<arrTicketNum.size(); index++) {
+		for(int index=0; index<arrNumberOfTicket.size(); index++) {
+			
 			System.out.printf("\n%s  %s x %d\t%d원\t   *%s",
 					arrTicketNum.get(index),arrAge2.get(index),
 					arrNumberOfTicket.get(index),
@@ -298,7 +301,7 @@ public class everland {
 	
 	public static void main(String[] args) {
 		do {
-			clearAll();
+			
 			
 			while(true) {
 				inputDate();
@@ -307,15 +310,17 @@ public class everland {
 				if (ticketNum=="A" || ticketNum=="B" || ticketNum=="C" ) {
 					inputAdvantage();
 					inputNumberOfTicket();
+					
 					break;
 				}
 				else if (ticketNum =="-") {				// 예약할 수 없는 날짜의 경우
 					sorry();
 					break;
 				}
+				
 			}
-			addTicket();
 			
+			addTicket();
 		}while(type==1);
 		
 		
