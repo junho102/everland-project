@@ -10,11 +10,9 @@ public class EverlandData {
 	public ArrayList<String> arrUdae = new ArrayList<String>();
 	public int allFinalPrice;
 	
-	public void inputNumberOfTicket(String ticketNum,
+	public void checkNumberOfTicket(String ticketNum,
 			String age2, int count, int price, String udae,
-			Scanner myInput) {
-		System.out.println("몇 장 구입하시겠습니까?");
-		int numberOfTicket = myInput.nextInt();
+			Scanner myInput, int numberOfTicket) {
 		arrTicketNum.add(ticketNum);
 		arrAge2.add(age2);
 		arrNumberOfTicket.add(numberOfTicket);

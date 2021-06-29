@@ -8,18 +8,22 @@ public class everland {
 	public static void main(String[] args) {
 		everlandProcess everProcess = new everlandProcess(); 
 		EverlandData everData = new EverlandData();
+		everlandInputProcess inputProcess = new everlandInputProcess();
 		
 		do {
 			while(true) {
-				everProcess.inputDate();
-				everProcess.inputJumin();
+				
+				everProcess.checkDate(inputProcess.inputDate());
+				
+				everProcess.checkJumin(inputProcess.inputJumin());
 				
 				if (everProcess.ticketNum=="A" || everProcess.ticketNum=="B" 
 						|| everProcess.ticketNum=="C" ) {
-					everProcess.inputAdvantage();
-					everData.inputNumberOfTicket(everProcess.ticketNum,
-							everProcess.age2, everProcess.count, everProcess.price,
-							everProcess.udae, everProcess.myInput);
+					everProcess.checkAdvantage(inputProcess.inputAdvantage());
+					everData.checkNumberOfTicket(everProcess.ticketNum,
+							everProcess.age2, everProcess.count, 
+							everProcess.price, everProcess.udae,
+							everProcess.myInput, inputProcess.inputNumberOfTicket());
 					break;
 				}
 				else if (everProcess.ticketNum =="-") {				// 예약할 수 없는 날짜의 경우
